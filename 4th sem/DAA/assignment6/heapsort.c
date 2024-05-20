@@ -4,8 +4,8 @@
 void max_heapify(int arr[], int n, int i)
 {
         int largest = i;
-        int left = 2 * i + 1;
-        int right = 2 * i + 2;
+        int left = 2 * i;
+        int right = 2 * i + 1;
 
             if( left <= n && arr[left] > arr[largest]){
                     largest = left;
@@ -13,11 +13,10 @@ void max_heapify(int arr[], int n, int i)
             else{
                     largest=i;
             }
-            if( right < n && arr[right] > arr[largest]){
+            if( right <= n && arr[right] > arr[largest]){
                    largest=right;
             }
-                           if (largest != i)
-                           {
+            if (largest != i){
                                    int temp = arr[i];
                                    arr[i] = arr[largest];
                                    arr[largest] = temp;
@@ -26,18 +25,18 @@ void max_heapify(int arr[], int n, int i)
 }
 void build_maxheap(int arr[], int n)
 {
-        for (int i = n / 2 - 1; i >= 0; i--)
+        for (int i = n / 2; i >= 1; i--)
                 max_heapify(arr, n, i);
 }
 void heapsort(int arr[], int n)
 {
         build_maxheap(arr, n);
-        for (int i = n - 1; i > 0; i--)
+        for (int i = n; i > 1; i--)
         {
-                int temp = arr[0];
-                arr[0] = arr[i];
+                int temp = arr[1];
+                arr[1] = arr[i];
                 arr[i] = temp;
-                max_heapify(arr, i, 0);
+                max_heapify(arr, i, 1);
         }
 }
 int main()  {

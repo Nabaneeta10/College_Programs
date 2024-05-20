@@ -19,13 +19,13 @@ void greedy_knapsack(int m, int n)
     int i;
     float profits[n], weights[n], ratios[n], x[n];
     printf("Enter profits and weights for each object:\n");
-    for(i=0;i<n;i++) {
+    for(i=1;i<=n;i++) {
         scanf("%f %f", &profits[i], &weights[i]);
         ratios[i]=profits[i]/weights[i];
     }
-    for(i=0;i<n-1;i++)
+    for(i=1;i<=n;i++)
     {
-        for(int j=0;j<n-i-1;j++)
+        for(int j=1;j<=n-i;j++)
         {
             if(ratios[j]<ratios[j+1])
             {
@@ -43,13 +43,13 @@ void greedy_knapsack(int m, int n)
             }
         }
     }
-    for(i=0;i<n;i++)
+    for(i=1;i<=n;i++)
     {
         x[i]=0;
     }
     float u=m;
     float totalProfit=0,totalWeight=0;
-    for(i=0;i<n;i++)
+    for(i=1;i<=n;i++)
     {
         if(weights[i]>u) break;
         x[i]=1;
@@ -65,7 +65,7 @@ void greedy_knapsack(int m, int n)
     }
 
     printf("Selected fraction of each item:\n");
-    for(i=0;i<n;i++)
+    for(i=1;i<=n;i++)
     {
         printf("%f ",x[i]);
     }
